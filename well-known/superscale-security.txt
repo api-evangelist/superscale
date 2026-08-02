@@ -1,0 +1,3 @@
+Contact: mailto:security@superscale.ai
+Expires: 2026-08-08T23:59:00.000Z
+Preferred-Languages: en,de

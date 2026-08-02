@@ -1,0 +1,13 @@
+generated: '2026-07-21'
+method: searched
+source: https://superscale.ai/llms.txt, https://status.superscale.ai/
+status_page: https://status.superscale.ai/
+versioning: null   # no public API yet; API/MCP integrations announced as "Coming Soon"
+deprecation: null
+sla: null
+deprecated_operations: []
+notes: >-
+  Superscale is a web-application product with no public API surface as of this
+  pass. It publishes a live status page (status.superscale.ai). API and MCP
+  integrations for external agents are announced as "Coming Soon" (see llms.txt),
+  so no versioning/deprecation policy exists to capture yet.

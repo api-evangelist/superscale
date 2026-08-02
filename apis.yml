@@ -1,9 +1,29 @@
 aid: superscale
 name: Superscale
-description: 'Superscale is a company surfaced as a portfolio company of creandum and added to the API
-  Evangelist network as a stub for enrichment. Sector: ai. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: >-
+  Superscale is an AI-powered marketing platform that generates full,
+  ready-to-launch ad creatives from a single prompt. A user pastes a product URL
+  (App Store, Shopify, website, or Lovable project) and describes what they need;
+  the autonomous Superscale Agent then researches winning ads in the niche, writes
+  copy and scripts, produces AI UGC videos and static image ads, adds captions and
+  finishing touches, and resizes every asset to all required aspect ratios for
+  Meta, TikTok, Google, YouTube, and X. It serves mobile-app marketers, e-commerce
+  brands, SaaS companies, agencies, and growth teams. Superscale is Europe-based and
+  backed by Interface Capital, S16VC, Creandum, Lovable, and ElevenLabs. Public
+  API and MCP integrations for external AI agents are announced as coming soon.
 url: https://raw.githubusercontent.com/api-evangelist/superscale/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://superscale.ai/images/og-images/default-og-image.jpg
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
@@ -12,10 +32,16 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
 - Ai
+- Marketing
+- Advertising
+- Generative AI
+- Creative
+- AdTech
+- SaaS
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -25,3 +51,36 @@ maintainers:
 common:
 - type: Website
   url: https://www.superscale.ai/
+- type: Pricing
+  url: https://superscale.ai/pricing
+- type: Login
+  url: https://superscale.ai/login
+- type: TermsOfService
+  url: https://superscale.ai/data/terms-and-conditions
+- type: PrivacyPolicy
+  url: https://superscale.ai/data/privacy-policy
+- type: Blog
+  url: https://superscale.ai/news
+- type: Support
+  url: mailto:support@superscale.ai
+- type: StatusPage
+  url: https://status.superscale.ai/
+- type: Lifecycle
+  url: lifecycle/superscale-lifecycle.yml
+- type: LLMsTxt
+  url: llms/superscale-llms.txt
+- type: WellKnown
+  url: well-known/superscale-well-known.yml
+- type: SecurityTxt
+  url: well-known/superscale-security.txt
+- type: VulnerabilityDisclosure
+  url: security/superscale-vulnerability-disclosure.yml
+- type: Security
+  url: well-known/superscale-security.txt
+- type: DomainSecurity
+  url: security/superscale-domain-security.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 6
+  pass: local-v1

@@ -1,0 +1,20 @@
+generated: '2026-07-21'
+method: searched
+source: live probes of https://superscale.ai/.well-known/*
+host: https://superscale.ai
+documents:
+- path: /.well-known/security.txt          # RFC 9116
+  status: 200
+  file: superscale-security.txt
+- path: /.well-known/openid-configuration   # OIDC discovery
+  status: 200
+  note: returns the Next.js SPA HTML shell, not a real OIDC document (no auth surface)
+- path: /.well-known/oauth-authorization-server  # RFC 8414
+  status: 200
+  note: returns the Next.js SPA HTML shell, not a real authorization-server document
+- path: /.well-known/api-catalog             # RFC 9727
+  status: 200
+  note: returns the Next.js SPA HTML shell, not a real API catalog document
+- path: /.well-known/ai-plugin.json
+  status: 200
+  note: returns the Next.js SPA HTML shell, not a real ai-plugin manifest

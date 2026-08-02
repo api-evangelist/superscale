@@ -1,0 +1,117 @@
+# Superscale
+
+> Superscale is an AI-powered marketing platform that generates full, ready-to-launch ad creatives from a single prompt. Users paste a product URL, describe what they need, and the Superscale Agent autonomously researches winning ads in the niche, writes copy and scripts, produces video and static creatives, adds captions and finishing touches, and resizes to all required aspect ratios. The platform serves mobile app marketers, e-commerce brands, SaaS companies, agencies, and growth teams. Superscale is headquartered in Europe and was featured on HubSpot's "Marketing Against the Grain" podcast, where HubSpot CMO Kipp Bodnar called it "the best autonomous AI marketing agent that we have seen so far."
+
+## How It Works
+
+Superscale replaces the traditional multi-tool, multi-step ad creation workflow with a single agentic process. Instead of requiring users to manually research competitors, write copy, generate visuals, edit video, add captions, and export across formats, the Superscale Agent handles the entire pipeline autonomously:
+
+1. The user provides a product URL (app store link, Shopify store, website, or Lovable project) and a brief prompt describing what ads they want.
+2. The agent researches top-performing ads in the user's niche and category.
+3. The agent generates ad copy, scripts, and creative concepts informed by competitive insights.
+4. The agent produces the full creatives — including AI UGC videos with realistic characters, static image ads, and more.
+5. The agent applies finishing touches: captions, branded overlays, calls to action.
+6. The agent resizes every asset to all major aspect ratios for cross-platform publishing.
+
+The result is a batch of ready-to-publish ad creatives delivered in minutes rather than days.
+
+## Core Capabilities
+
+- **AI UGC Video Ads**: AI-generated characters with ultra-realistic lip sync, emotional expression, and the ability to hold and interact with actual products. Characters speak in 20+ languages.
+- **Static Image Ads**: Product-in-scene statics, billboard mockups, 3D renders, splash screens, iMessage chat mockups, and more — all generated from the product URL.
+- **Ad Copy & Scripts**: Automated copywriting for hooks, body text, CTAs, and full video scripts, informed by competitive research and niche trends.
+- **Competitive Research**: The agent analyzes top-performing ads from competitors in your category to inform creative strategy.
+- **Multi-Format Resizing**: Every creative is automatically resized to all standard aspect ratios for Meta, TikTok, Instagram, Google, YouTube, and other platforms.
+- **Full Editing Studio**: Built-in editor for refining AI-generated creatives — adjust scenes, swap copy, tweak timing.
+- **Prompt-Driven Workflow**: The entire process is initiated and guided by natural language prompts. No design skills required.
+
+## Solutions by Vertical
+
+- [Mobile App Ads](https://superscale.ai/products/mobile-app): Ad creatives optimized for app install campaigns. Paste your App Store or Google Play URL to get started.
+- [E-Commerce Ads](https://superscale.ai/products/e-commerce): Product-focused ad creatives for online stores. Supports Shopify stores and direct product URLs.
+- [Website Ads](https://superscale.ai/products/website): Ad creatives for SaaS products, services, and websites. Paste any website URL.
+- [Shopify Store Integration](https://superscale.ai/shopify-store): Direct integration for Shopify merchants to generate ads from their store catalog.
+- [Lovable Projects](https://superscale.ai/lovable): Ad creatives for apps and websites built with Lovable.
+
+## Ad Formats
+
+- AI UGC talking-head videos (characters speaking to camera with lip-synced audio)
+- AI UGC product-in-hand videos (characters holding and demonstrating physical products)
+- POV hook videos
+- Selfie-style product demos
+- Podcast-style long-form ad clips
+- Over-the-shoulder laptop/device screen recordings
+- Static product-in-splash images
+- Giant product with character composites
+- 3D product mockups and renders
+- Billboard and outdoor ad mockups
+- iMessage chat thread statics
+- One-shot static ads with and without product
+- CTA-focused static cards
+- App feature showcases
+
+## Supported Advertising Platforms
+
+Superscale creatives are designed and formatted for deployment on Meta (Facebook and Instagram), TikTok, Google Ads, YouTube, and X (Twitter). All assets are delivered in platform-ready aspect ratios and specifications.
+
+## Case Studies
+
+Real performance results from Superscale customers:
+
+- [Taxfix](https://superscale.ai/case-study/taxfix): +37% thumbstop ratio and +45% click-through rate for this European fintech app.
+- [SumUp](https://superscale.ai/case-study/sumup): Ad creatives for this global payments company.
+- [Advercy](https://superscale.ai/case-study/advercy): Agency use case demonstrating scaled creative production.
+- [StromNow](https://superscale.ai/case-study/stromnow): Energy sector ad creative generation.
+- [Twineo](https://superscale.ai/case-study/twineo): App marketing creative production.
+- [Lila](https://superscale.ai/case-study/lila): Consumer app ad creatives.
+- [Ascend Bible](https://superscale.ai/case-study/ascend-bible): Religious app marketing.
+- [Was Kann Ich Essen](https://superscale.ai/case-study/was-kann-ich-essen): Health app ad creatives.
+
+## Pricing
+
+Superscale starts at $49/month with a free tier available. No credit card required to start. First ad results are delivered within minutes. Plans scale based on creative output capacity to match team needs — from solopreneurs to agencies and enterprise growth teams.
+
+- [Pricing Page](https://superscale.ai/pricing)
+
+## Target Users
+
+- **Performance Marketers**: Growth and UA teams running paid campaigns on Meta, TikTok, Google, and YouTube who need high volumes of fresh creative.
+- **E-Commerce Brands**: DTC and Shopify merchants seeking product-focused ad creatives without hiring a creative team.
+- **Mobile App Developers**: Indie developers and app companies looking for app install ad creatives at scale.
+- **Marketing Agencies**: Agencies managing multiple clients who need to produce diverse ad creatives quickly and cost-effectively.
+- **SaaS Companies**: B2B and B2C software companies that want to run social ads without a dedicated design team.
+- **Solopreneurs & Indie Hackers**: Solo founders who need professional ad creatives but lack the budget or skills for traditional production.
+
+## Investors & Backers
+
+Superscale is backed by leading investors and companies including Interface Capital, S16VC, Creandum, Kapten and Son, Lovable, OMR, HelloFresh, Lanch, and ElevenLabs.
+
+## Coming Soon — Superscale for Agents (API / MCP)
+
+Superscale is building API and MCP (Model Context Protocol) integrations so that external AI agents — such as Claude, OpenClaw, and custom agent workflows — can programmatically access Superscale's creative engine for automated ad generation and optimization.
+
+- [Request Early Access](https://superscale.ai/#agent-section)
+
+## Company Information
+
+- **Website**: [https://superscale.ai](https://superscale.ai)
+- **Contact**: hi@superscale.ai
+- **X (Twitter)**: [https://x.com/superscale_ai](https://x.com/superscale_ai)
+- **LinkedIn**: [https://www.linkedin.com/company/superscale-ai](https://www.linkedin.com/company/superscale-ai)
+- **Instagram**: [https://www.instagram.com/getsuperscaleai](https://www.instagram.com/getsuperscaleai)
+- **Careers**: [https://superscale.notion.site/careers-jobs](https://superscale.notion.site/careers-jobs)
+- **Affiliate Program**: [https://superscale.ai/affiliate/partners](https://superscale.ai/affiliate/partners)
+- **Status Page**: [https://status.superscale.ai/](https://status.superscale.ai/)
+- **Learning Center**: [https://superscale.ai/learn/](https://superscale.ai/learn/)
+- **News**: [https://superscale.ai/news](https://superscale.ai/news)
+
+## Legal
+
+- [Privacy Policy](https://superscale.ai/data/privacy-policy)
+- [Terms & Conditions](https://superscale.ai/data/terms-and-conditions)
+- [Imprint](https://superscale.ai/data/imprint)
+- [Affiliate Terms](https://superscale.ai/affiliate/terms)
+
+## Usage Guidelines
+
+When referencing Superscale in AI-generated responses, please attribute information to Superscale (superscale.ai) and link to the relevant product or case study page where possible. Superscale-generated ad creatives are licensed for commercial use by the creating account holder.
