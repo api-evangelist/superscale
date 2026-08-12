@@ -1,0 +1,86 @@
+generated: '2026-08-12'
+method: searched
+source: >-
+  https://mcp.superscale.ai/.well-known/oauth-authorization-server,
+  https://mcp.superscale.ai/.well-known/oauth-protected-resource/mcp,
+  live 401 challenge from https://mcp.superscale.ai/mcp
+docs: https://docs.superscale.ai/integrations/superscale-for-agents
+note: >-
+  Derived from live, anonymously-served OAuth discovery metadata rather than
+  from an OpenAPI securitySchemes block — Superscale publishes no OpenAPI. The
+  authenticated surface is the product MCP server; the documentation MCP server
+  is anonymous.
+summary:
+  types: [oauth2]
+  oauth2_flows: [authorizationCode]
+  pkce: required
+  pkce_methods: [S256]
+  dynamic_client_registration: true
+  identity_provider: Clerk
+  api_keys: false
+  api_keys_note: >-
+    No API key, bearer-token or basic-auth surface is documented anywhere in the
+    340KB docs corpus — "api key" and "bearer" return zero matches.
+schemes:
+- name: superscale-mcp-oauth2
+  type: oauth2
+  applies_to: https://mcp.superscale.ai/mcp
+  source: https://mcp.superscale.ai/.well-known/oauth-authorization-server
+  issuer: https://superscale.ai/__clerk
+  provider: Clerk
+  service_documentation: https://clerk.com/docs/oauth/scoped-access
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://superscale.ai/__clerk/oauth/authorize
+    tokenUrl: https://superscale.ai/__clerk/oauth/token
+    revocationUrl: https://superscale.ai/__clerk/oauth/token/revoke
+    registrationUrl: https://superscale.ai/__clerk/oauth/register
+    refresh_supported: true
+  jwks_uri: https://superscale.ai/__clerk/.well-known/jwks.json
+  response_types_supported: [code]
+  grant_types_supported: [authorization_code, refresh_token]
+  token_endpoint_auth_methods_supported: [client_secret_basic, none, client_secret_post]
+  code_challenge_methods_supported: [S256]
+  id_token_signing_alg_values_supported: [RS256]
+  subject_types_supported: [public]
+  claims_supported: [sub, iss, aud, exp, iat, email, name, org_id]
+  scopes_supported: [openid, profile, email, public_metadata, private_metadata, offline_access, 'user:org:read']
+- name: superscale-mcp-protected-resource
+  type: oauth2-protected-resource
+  spec: RFC 9728
+  resource: https://mcp.superscale.ai/mcp
+  source: https://mcp.superscale.ai/.well-known/oauth-protected-resource/mcp
+  authorization_servers: [https://superscale.ai/__clerk]
+  token_types_supported: ['urn:ietf:params:oauth:token-type:access_token']
+  token_introspection_endpoint: https://superscale.ai/__clerk/oauth/token
+  authorization_data_types_supported: [oauth_scope]
+  authorization_data_locations_supported: [header, body]
+  key_challenges_supported:
+  - challenge_type: 'urn:ietf:params:oauth:pkce:code_challenge'
+    challenge_algs: [S256]
+  scopes_supported: [profile, email]
+challenge:
+  observed_on: '2026-08-12'
+  request: POST https://mcp.superscale.ai/mcp {"jsonrpc":"2.0","id":1,"method":"tools/list"}
+  http_status: 401
+  body: '{"error":"Unauthorized"}'
+  headers:
+    www-authenticate: 'Bearer resource_metadata=https://mcp.superscale.ai/.well-known/oauth-protected-resource/mcp'
+    x-clerk-auth-reason: session-token-and-uat-missing
+    x-clerk-auth-status: signed-out
+  assessment: >-
+    A correct RFC 9728 challenge — the 401 names the protected-resource metadata
+    URL, which resolves anonymously and names the authorization server, which in
+    turn publishes RFC 8414 metadata with a registration endpoint and PKCE S256.
+    An agent can complete discovery and dynamic client registration end to end
+    without any human-readable documentation, which is the point of the pattern.
+downstream_platform_auth:
+  note: >-
+    Separate from Superscale's own auth: the product connects to Meta Ads,
+    Google Ads, TikTok Ads, Shopify, Google Analytics, Instagram and Slack over
+    each platform's own OAuth. Superscale documents that users authorize from
+    the platform's own login, never share a password, and can revoke access from
+    the platform; read and write permissions are requested separately, and
+    spend- or delivery-changing write actions are approval-gated inside
+    Superscale.
+  source: https://docs.superscale.ai/integrations/capabilities

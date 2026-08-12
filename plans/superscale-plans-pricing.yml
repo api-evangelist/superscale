@@ -1,0 +1,149 @@
+generated: '2026-08-12'
+method: searched
+source: https://docs.superscale.ai/billing/plans
+additional_sources:
+- https://docs.superscale.ai/billing/how-credits-work
+- https://docs.superscale.ai/changelog
+- https://superscale.ai/pricing
+currency: USD
+billing_period: monthly
+tax_note: Prices are monthly in USD before applicable taxes unless checkout shows a tax-inclusive price.
+plan_count: 6
+lineup_dated: '2026-07-23'
+lineup_note: >-
+  The four-tier lineup below was introduced in the 2026-07-23 changelog entry.
+  It supersedes the "starts at $49/month" figure still carried on the apex
+  llms.txt, which is stale — the current entry price is $99/month (Advanced).
+plans:
+- name: Free account
+  price: 0
+  currency: USD
+  period: null
+  credit_card_required: false
+  included:
+    credits: 1000
+    credits_recurring: false
+    integrations: false
+  limits:
+    agent_statics_at_30_credits: 33
+    agent_seedance_videos_at_500_credits: 2
+  note: Every account starts here. One-time 1,000 credits to try the agent and generate real ads.
+- name: Free trial
+  price: 0
+  currency: USD
+  period: 5 days
+  credit_card_required: true
+  included:
+    credits: 3000
+    credits_recurring: false
+  eligibility: >-
+    A workspace is eligible if it has not had a subscription before, unless the
+    team explicitly resets trial eligibility.
+  limits:
+    agent_statics_at_30_credits: 100
+    agent_seedance_videos_at_500_credits: 6
+  conversion: >-
+    Goes through checkout and converts to the selected paid plan at the end of
+    five days unless canceled first. The selected plan can be switched during
+    the trial. Trial credits expire when the trial ends or is ended early.
+- name: Advanced
+  price: 99
+  currency: USD
+  period: month
+  included:
+    credits: 8000
+    ai_generations: 250
+    brands: 1
+    team_members: 2
+    integrations: false
+    mcp: false
+  limits:
+    agent_statics_at_30_credits: 266
+    agent_seedance_videos_at_500_credits: 16
+- name: Pro
+  price: 199
+  currency: USD
+  period: month
+  included:
+    credits: 16000
+    ai_generations: 500
+    brands: 5
+    team_members: 5
+    integrations: true
+    mcp: true
+  limits:
+    agent_statics_at_30_credits: 533
+    agent_seedance_videos_at_500_credits: 32
+  note: >-
+    The entitlement floor for the machine-readable surface. Ad-account
+    integrations (Meta, Google, TikTok, Shopify) AND the Superscale MCP server
+    both start on Pro.
+- name: Scale
+  price: 399
+  currency: USD
+  period: month
+  included:
+    credits: 32000
+    ai_generations: 1000
+    brands: 15
+    team_members: 15
+    integrations: true
+    mcp: true
+  limits:
+    agent_statics_at_30_credits: 1066
+    agent_seedance_videos_at_500_credits: 64
+- name: Enterprise
+  price: 799
+  price_qualifier: from
+  currency: USD
+  period: month
+  included:
+    credits: custom
+    ai_generations: custom
+    brands: unlimited
+    team_members: unlimited
+    integrations: true
+    mcp: true
+  contact: https://cal.com/team/superscale/enterprise
+  note: >-
+    Starts at $799/month on the billing page; final pricing, credit volume,
+    volume discounts, support, SLAs and contract terms are set with the team.
+    Enterprise contracts can carry custom credit volumes, rollover terms,
+    invoicing and cancellation restrictions.
+unit_costs:
+  source: https://docs.superscale.ai/billing/how-credits-work
+  agent_message: 1
+  report: 10
+  agent_static: 30
+  agent_seedance_video: 500
+  note: >-
+    Video is "from" 500 — longer or chunked workflows use multiple video units,
+    and template costs vary. The app shows the exact credit cost before
+    generation.
+overage:
+  rollover: false
+  rollover_note: Standard monthly plan credits reset each billing period and do not roll over.
+  top_ups:
+    available: true
+    eligibility: workspaces with an active paid plan, when the option is shown in Settings
+    packs: [2500, 5000, 10000]
+    expiry: Top-up credits stay available until spent.
+  bonus:
+    referral: 3000 credits when a referred workspace subscribes to a paid plan
+    review: 3000 credits for a verified public review
+proration:
+  upgrades: take effect immediately
+  downgrades: scheduled for the next billing period
+  cancellation: access continues to the end of the paid period
+credit_pools:
+  spend_order: [free, trial, subscription, top-up, bonus-and-promotional]
+  expiry:
+    free: available from workspace creation
+    trial: expire when the trial ends or is ended early
+    subscription: reset each billing period, no rollover
+    top_up: available until spent
+    referral_bonus: available until spent
+    promotional: per the dates shown in the billing UI or offer terms
+refunds:
+  failed_generation: pending credits are returned automatically when the failure is detected
+  unusable_output: support can inspect, retry or refund credits when the failure is real

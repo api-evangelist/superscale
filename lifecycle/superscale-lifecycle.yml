@@ -1,13 +1,73 @@
-generated: '2026-07-21'
+generated: '2026-08-12'
 method: searched
-source: https://superscale.ai/llms.txt, https://status.superscale.ai/
+source: >-
+  https://status.superscale.ai/, https://docs.superscale.ai/changelog,
+  https://docs.superscale.ai/billing/plans, live protocol introspection
+supersedes: >-
+  The 2026-07-21 pass recorded "no public API surface". That is no longer
+  true — an OAuth-gated MCP server is live at mcp.superscale.ai and an
+  anonymous documentation MCP server, an A2A agent card and an Agent Skill are
+  served from docs.superscale.ai.
 status_page: https://status.superscale.ai/
-versioning: null   # no public API yet; API/MCP integrations announced as "Coming Soon"
-deprecation: null
-sla: null
+status_page_status: 200
+changelog: https://docs.superscale.ai/changelog
+versioning:
+  scheme: protocol-version
+  current: null
+  detail: >-
+    Superscale defines no product API version. Versioning is inherited from the
+    protocols it implements: MCP protocolVersion 2025-06-18 (docs server),
+    A2A protocolVersion 0.3 with card version 1.0.0, Agent Skills discovery
+    schema 0.2.0, skill metadata version "1.0". There is no URI-path, header or
+    date-based API version to pin, and no documented policy for changing any of
+    these.
+  docs: null
+deprecation:
+  policy_url: null
+  sunset_header: false
+  detail: >-
+    No deprecation or sunset policy is published, and no RFC 8594 Sunset or
+    Deprecation header was observed. Integration retirements are announced only
+    as prose in the changelog. Not emitting a Deprecation pointer.
+sla:
+  url: null
+  uptime_target: null
+  detail: >-
+    No public SLA. The plans page states SLAs are among the terms "set with the
+    team" for Enterprise contracts, so any SLA is contractual and unpublished.
+support:
+  email: support@superscale.ai
+  general: hi@superscale.ai
+  in_product: live chat (shipped 2026-04-30)
+  enterprise_demo: https://cal.com/team/superscale/enterprise
 deprecated_operations: []
+maturity:
+  surface: mcp
+  stage: shipped-gated
+  detail: >-
+    The product MCP server is live and entitled from the Pro plan upward per the
+    2026-07-23 changelog, but the docs page that describes it still reads
+    "coming soon" and directs readers to request early access. The REST API half
+    of "Superscale for Agents" has genuinely not shipped.
+  first_dated_evidence: '2026-07-23'
+roadmap:
+  url: null
+  published_intent:
+  - {item: Superscale REST API, status: announced, source: 'https://docs.superscale.ai/integrations/superscale-for-agents'}
+  - {item: Reddit Ads integration, status: planned, source: 'https://docs.superscale.ai/integrations/reddit-ads'}
+  - {item: X Ads integration, status: planned, source: 'https://docs.superscale.ai/integrations/x-ads'}
+  - {item: LinkedIn Ads integration, status: planned, source: 'https://docs.superscale.ai/integrations/linkedin-ads'}
+  - {item: Klaviyo integration, status: planned, source: 'https://docs.superscale.ai/integrations/klaviyo'}
+  - {item: HubSpot integration, status: planned, source: 'https://docs.superscale.ai/integrations/hubspot'}
+  - {item: Notion integration, status: planned, source: 'https://docs.superscale.ai/integrations/notion'}
+  detail: >-
+    No roadmap page exists; the items above are individual "coming soon" or
+    "planned" statements on their own docs pages. Not emitting a Roadmap
+    pointer — a set of planned-integration stubs is not a published roadmap.
 notes: >-
-  Superscale is a web-application product with no public API surface as of this
-  pass. It publishes a live status page (status.superscale.ai). API and MCP
-  integrations for external agents are announced as "Coming Soon" (see llms.txt),
-  so no versioning/deprecation policy exists to capture yet.
+  Operational transparency is genuinely good for a company this young: a live
+  status page, a well-maintained dated changelog that even names the underlying
+  models, and an in-product support channel. What is missing is everything that
+  makes a surface safe to build against over time — no versioning policy, no
+  deprecation policy, no public SLA, and a security.txt that expired on
+  2026-08-08.

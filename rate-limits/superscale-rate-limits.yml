@@ -1,0 +1,95 @@
+generated: '2026-08-12'
+method: searched
+source: https://docs.superscale.ai/billing/plans
+additional_sources:
+- https://docs.superscale.ai/billing/how-credits-work
+limit_count: 8
+headers: []
+headers_note: >-
+  NO runtime rate-limit signal is published or observable. No RateLimit-*,
+  X-RateLimit-* or Retry-After header appeared on any response from
+  superscale.ai, docs.superscale.ai or mcp.superscale.ai, and the full 340KB
+  docs corpus contains zero occurrences of "rate limit", "throttle", "429" or
+  "concurrency". An agent integrating the MCP server has no way to learn its
+  remaining headroom from a response — it can only read the credit balance in
+  the app UI. This is the single largest agent-readiness gap on the surface.
+exhaustion_status: null
+exhaustion_note: >-
+  The HTTP status returned when a workspace runs out of credits mid-call is not
+  documented and could not be observed anonymously (the product MCP server is
+  OAuth-gated).
+model: quota
+model_note: >-
+  Superscale meters by CREDIT QUOTA per billing period, not by request rate.
+  The limits below are the published, plan-attached quotas — real provider
+  numbers, but monthly budgets rather than per-window request ceilings.
+limits:
+- scope: workspace
+  window: month
+  metric: credits
+  plan: Advanced
+  limit: 8000
+  burst: null
+- scope: workspace
+  window: month
+  metric: credits
+  plan: Pro
+  limit: 16000
+  burst: null
+- scope: workspace
+  window: month
+  metric: credits
+  plan: Scale
+  limit: 32000
+  burst: null
+- scope: workspace
+  window: month
+  metric: credits
+  plan: Enterprise
+  limit: null
+  note: Custom credit volume set by contract.
+- scope: workspace
+  window: month
+  metric: ai_generations
+  plan: Advanced
+  limit: 250
+- scope: workspace
+  window: month
+  metric: ai_generations
+  plan: Pro
+  limit: 500
+- scope: workspace
+  window: month
+  metric: ai_generations
+  plan: Scale
+  limit: 1000
+- scope: workspace
+  window: one-time
+  metric: credits
+  plan: Free account
+  limit: 1000
+  note: One-time grant on workspace creation, not a recurring window.
+structural_limits:
+- scope: workspace
+  metric: brands
+  values: {Advanced: 1, Pro: 5, Scale: 15, Enterprise: unlimited}
+- scope: workspace
+  metric: team_members
+  values: {Advanced: 2, Pro: 5, Scale: 15, Enterprise: unlimited}
+unit_costs:
+  agent_message: 1
+  report: 10
+  agent_static: 30
+  agent_seedance_video: 500
+  note: >-
+    Effective throughput is quota divided by unit cost — e.g. a Pro workspace's
+    16,000 monthly credits buy 533 statics OR 32 Seedance videos.
+top_ups:
+  available: true
+  packs: [2500, 5000, 10000]
+  eligibility: active paid plan, when shown in Settings
+entitlement_gate:
+  note: >-
+    Access to the MCP server itself is plan-gated rather than rate-gated — it
+    starts on Pro ($199/mo). A Free or Advanced workspace has no MCP access at
+    any rate.

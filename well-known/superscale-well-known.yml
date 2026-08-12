@@ -1,20 +1,157 @@
-generated: '2026-07-21'
+generated: '2026-08-12'
 method: searched
-source: live probes of https://superscale.ai/.well-known/*
-host: https://superscale.ai
+source: live probes of /.well-known/* on every Superscale host
+supersedes: >-
+  The 2026-07-21 pass probed only superscale.ai and recorded five SPA-shell
+  200s. This pass probed docs.superscale.ai, app.superscale.ai and
+  mcp.superscale.ai as well and found four REAL documents that the apex-only
+  probe could not see.
+hosts:
+- https://superscale.ai
+- https://app.superscale.ai
+- https://docs.superscale.ai
+- https://mcp.superscale.ai
+real_documents: 6
 documents:
-- path: /.well-known/security.txt          # RFC 9116
+# ---- docs.superscale.ai — the real discovery surface ----
+- host: https://docs.superscale.ai
+  path: /.well-known/agent-card.json
   status: 200
+  content_type: application/json
+  real: true
+  kind: A2A Agent Card
+  file: ../a2a/superscale-agent-card.json
+  note: Parses as a JSON object with conformant A2A shape. See a2a/superscale-a2a.yml.
+- host: https://docs.superscale.ai
+  path: /.well-known/agent-skills/index.json
+  status: 200
+  content_type: application/json
+  real: true
+  kind: Agent Skills discovery 0.2.0
+  file: superscale-agent-skills-index.json
+- host: https://docs.superscale.ai
+  path: /.well-known/agent-skills/superscale/skill.md
+  status: 200
+  content_type: text/markdown
+  real: true
+  kind: Agent Skill (skill.md)
+  file: ../skills/superscale-superscale.md
+- host: https://docs.superscale.ai
+  path: /.well-known/mcp.json
+  status: 200
+  content_type: application/json
+  real: true
+  kind: MCP server manifest
+  file: superscale-mcp.json
+- host: https://docs.superscale.ai
+  path: /.well-known/security.txt
+  status: 404
+- host: https://docs.superscale.ai
+  path: /.well-known/openid-configuration
+  status: 404
+- host: https://docs.superscale.ai
+  path: /.well-known/oauth-authorization-server
+  status: 404
+- host: https://docs.superscale.ai
+  path: /.well-known/api-catalog
+  status: 404
+- host: https://docs.superscale.ai
+  path: /.well-known/ai-plugin.json
+  status: 404
+- host: https://docs.superscale.ai
+  path: /.well-known/agent.json
+  status: 404
+# ---- mcp.superscale.ai — OAuth discovery, served anonymously ----
+- host: https://mcp.superscale.ai
+  path: /.well-known/oauth-authorization-server
+  status: 200
+  content_type: application/json
+  real: true
+  kind: RFC 8414 authorization-server metadata
+  file: superscale-oauth-authorization-server.json
+- host: https://mcp.superscale.ai
+  path: /.well-known/oauth-protected-resource
+  status: 200
+  content_type: application/json
+  real: true
+  kind: RFC 9728 protected-resource metadata
+  file: superscale-oauth-protected-resource.json
+- host: https://mcp.superscale.ai
+  path: /.well-known/oauth-protected-resource/mcp
+  status: 200
+  content_type: application/json
+  real: true
+  kind: RFC 9728 protected-resource metadata (per-resource)
+  note: >-
+    Identical shape to the root document with resource
+    https://mcp.superscale.ai/mcp. This is the URL named in the
+    WWW-Authenticate challenge returned by the MCP endpoint.
+- host: https://mcp.superscale.ai
+  path: /.well-known/security.txt
+  status: 404
+- host: https://mcp.superscale.ai
+  path: /.well-known/openid-configuration
+  status: 404
+- host: https://mcp.superscale.ai
+  path: /.well-known/api-catalog
+  status: 404
+- host: https://mcp.superscale.ai
+  path: /.well-known/ai-plugin.json
+  status: 404
+- host: https://mcp.superscale.ai
+  path: /.well-known/agent-card.json
+  status: 404
+- host: https://mcp.superscale.ai
+  path: /.well-known/agent.json
+  status: 404
+# ---- superscale.ai / app.superscale.ai — SPA catch-all, one real file ----
+- host: https://superscale.ai
+  path: /.well-known/security.txt
+  status: 200
+  content_type: text/plain
+  real: true
+  kind: RFC 9116 security.txt
   file: superscale-security.txt
-- path: /.well-known/openid-configuration   # OIDC discovery
+  note: >-
+    Also served identically from https://app.superscale.ai. EXPIRED — the
+    Expires field is 2026-08-08T23:59:00.000Z, four days before this probe
+    (2026-08-12). RFC 9116 says a security.txt past its Expires date should
+    not be relied upon. The contact address itself still resolves and is
+    recorded in security/superscale-vulnerability-disclosure.yml.
+- host: https://superscale.ai
+  path: /.well-known/openid-configuration
   status: 200
-  note: returns the Next.js SPA HTML shell, not a real OIDC document (no auth surface)
-- path: /.well-known/oauth-authorization-server  # RFC 8414
+  real: false
+  note: Next.js SPA HTML shell (205KB text/html), not a document.
+- host: https://superscale.ai
+  path: /.well-known/oauth-authorization-server
   status: 200
-  note: returns the Next.js SPA HTML shell, not a real authorization-server document
-- path: /.well-known/api-catalog             # RFC 9727
+  real: false
+  note: Next.js SPA HTML shell, not a document.
+- host: https://superscale.ai
+  path: /.well-known/api-catalog
   status: 200
-  note: returns the Next.js SPA HTML shell, not a real API catalog document
-- path: /.well-known/ai-plugin.json
+  real: false
+  note: Next.js SPA HTML shell, not a document.
+- host: https://superscale.ai
+  path: /.well-known/ai-plugin.json
   status: 200
-  note: returns the Next.js SPA HTML shell, not a real ai-plugin manifest
+  real: false
+  note: Next.js SPA HTML shell, not a document.
+- host: https://superscale.ai
+  path: /.well-known/agent-card.json
+  status: 200
+  real: false
+  note: >-
+    Next.js SPA HTML shell. REJECTED as an agent card — the apex answers 200
+    with the same 205KB HTML body for every /.well-known/* path including
+    /.well-known/agent.json and even
+    /.well-known/agent-skills/superscale/skill.md. The genuine card is on
+    docs.superscale.ai.
+- host: https://app.superscale.ai
+  path: /.well-known/*
+  status: 200
+  real: false
+  note: >-
+    Same Next.js SPA catch-all as the apex for every path except
+    security.txt, which is served correctly.

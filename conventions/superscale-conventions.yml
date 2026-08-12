@@ -1,0 +1,99 @@
+generated: '2026-08-12'
+method: probed
+source: >-
+  live introspection of https://docs.superscale.ai/mcp, the 401 challenge from
+  https://mcp.superscale.ai/mcp, and https://docs.superscale.ai/integrations/capabilities
+note: >-
+  Superscale has no REST API, so the usual REST conventions (pagination,
+  sparse fields, expansion, request-id tracing, URI versioning) have no
+  surface to describe. What it does have is an agent-protocol contract, and
+  that is what is captured here. Nothing in this file is inferred from an
+  OpenAPI document, because none exists.
+surface: mcp
+authentication:
+  style: oauth2-bearer
+  discovery: RFC 9728 protected-resource metadata named in the WWW-Authenticate challenge
+  detail: See authentication/superscale-authentication.yml
+transport:
+  protocol: Model Context Protocol
+  version: '2025-06-18'
+  binding: Streamable HTTP
+  content_types: [application/json, text/event-stream]
+  envelope: JSON-RPC 2.0
+  observed: >-
+    docs.superscale.ai/mcp responds to a POST with a text/event-stream body
+    carrying a single `event: message` frame whose data is the JSON-RPC result.
+    It accepted a bare tools/list without a prior initialize handshake or an
+    mcp-session-id header (stateless).
+idempotency:
+  supported: false
+  documented: false
+  note: >-
+    No idempotency key, header or retry-safety contract is documented anywhere.
+    Deliberately NOT emitting an Idempotency pointer: the only idempotency
+    signal on the surface is the MCP `idempotentHint: true` annotation on the
+    read-only docs search tool, which is a client hint about a search call, not
+    a provider idempotency contract for state-changing work. The
+    state-changing operations (ad generation, campaign publishing) are behind
+    the gated product MCP and their retry semantics are unpublished.
+  annotations_observed:
+  - tool: search_superscale
+    readOnlyHint: true
+    destructiveHint: false
+    idempotentHint: true
+    openWorldHint: false
+pagination:
+  supported: null
+  note: No paginated surface is published. The docs MCP tools return whole result sets.
+error_envelope:
+  style: bare-json
+  shape: '{"error": "<message>"}'
+  observed:
+  - {url: 'https://mcp.superscale.ai/mcp', http_status: 401, body: '{"error":"Unauthorized"}'}
+  problem_json: false
+  jsonrpc_errors: >-
+    The anonymous docs MCP server returns JSON-RPC 2.0 error objects per the
+    MCP spec; no provider-specific error-code registry is published.
+versioning:
+  scheme: protocol-version
+  detail: >-
+    There is no product API version. The MCP server declares protocolVersion
+    2025-06-18 and the agent card declares protocolVersion 0.3 / version 1.0.0
+    — versioning is inherited from the protocols, not defined by Superscale.
+  policy_url: null
+rate_limit_signaling:
+  headers: []
+  note: >-
+    No RateLimit-*, X-RateLimit-* or Retry-After header was observed on any
+    response, and no rate limit is documented. Metering is credit-based and
+    accounted per plan — see rate-limits/superscale-rate-limits.yml.
+approval_gating:
+  documented: true
+  source: https://docs.superscale.ai/integrations/capabilities
+  detail: >-
+    The most consequential convention Superscale actually publishes. Any action
+    that starts, pauses, resumes, archives or removes ad delivery, changes a
+    budget, or replaces live creative is a blocking human approval checkpoint
+    before the downstream platform API call is made. Approval cards show
+    platform, action, description and fields; they run one at a time; a declined
+    or failed later step does NOT roll back earlier approved steps. Meta and
+    Google creation steps default to paused. This is a human-in-the-loop
+    contract an agent integrator must plan around: an approved MCP call can
+    block on a human indefinitely, and partial failure is non-transactional.
+  agent_relevance: high
+metering:
+  unit: credit
+  detail: >-
+    Every metered action costs credits and the app displays the cost before
+    execution. Agent message 1 credit; report 10; Agent static 30; Agent
+    Seedance video from 500. Failed generations return pending credits
+    automatically. Pools are spent in order: free, trial, subscription, top-up,
+    then bonus/promotional.
+  source: https://docs.superscale.ai/billing/how-credits-work
+cross_links:
+  authentication: authentication/superscale-authentication.yml
+  scopes: scopes/superscale-scopes.yml
+  rate_limits: rate-limits/superscale-rate-limits.yml
+  plans: plans/superscale-plans-pricing.yml
+  lifecycle: lifecycle/superscale-lifecycle.yml
+  mcp: mcp/superscale-mcp.yml

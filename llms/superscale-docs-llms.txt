@@ -1,0 +1,88 @@
+# Superscale
+
+> Superscale is an autonomous AI marketing agent that researches, creates, and runs your paid ads.
+
+## Docs
+
+- [Welcome to Superscale](https://docs.superscale.ai/index.md): An autonomous AI marketing agent that researches, creates, and runs your paid ads.
+- [Quickstart](https://docs.superscale.ai/getting-started/quickstart.md): Set up your first brand, give the agent context, and generate a first batch of ads.
+- [Create an account](https://docs.superscale.ai/getting-started/create-account.md): Sign up, verify your email, and set up your first brand.
+- [How credits work](https://docs.superscale.ai/billing/how-credits-work.md): What spends credits, what does not, and how to avoid wasting them.
+- [Plans](https://docs.superscale.ai/billing/plans.md): Start free, try any plan, then subscribe. Credits, integrations, and what each tier includes.
+- [Get free credits](https://docs.superscale.ai/billing/get-free-credits.md): Learn how to earn credits for free
+- [Vision](https://docs.superscale.ai/getting-started/vision.md): How we think about marketing, and the philosophy behind Superscale.
+- [Built for your business](https://docs.superscale.ai/business-types/overview.md): Superscale is purpose-built for how you work: apps, e-commerce, agencies, and services.
+- [Consumer & mobile apps](https://docs.superscale.ai/business-types/consumer-apps.md): Superscale is built for app marketing: it imports your store pages and shows your app in action.
+- [E-commerce](https://docs.superscale.ai/business-types/ecommerce.md): Superscale reads your catalog, keeps it in sync, and builds product-led ads for any product.
+- [Agencies](https://docs.superscale.ai/business-types/agencies.md): Run every client as its own brand, keep context separated, and scale creative production across accounts.
+- [Service businesses](https://docs.superscale.ai/business-types/services.md): Set up Superscale for a service business, online or in the real world.
+- [Workspaces & brands](https://docs.superscale.ai/getting-started/workspaces-and-brands.md): How workspaces, brands, and products nest, how to run many brands at once, and how to bring your team in.
+- [Referrals & partners](https://docs.superscale.ai/billing/referrals.md): Earn credits by referring others, or apply to the partner program to refer at scale.
+- [Context, explained](https://docs.superscale.ai/context/overview.md): What context is, why it decides the quality of your ads, and what to put in it.
+- [How context is used](https://docs.superscale.ai/context/how-context-is-used.md): Understand what the agent uses now, what stays in the current chat, and what becomes durable context.
+- [Levels & sources](https://docs.superscale.ai/context/levels-and-sources.md): Where context lives across workspace, brand, and product, and where it comes from.
+- [Context vs skills](https://docs.superscale.ai/context/context-vs-skills.md): Two ways to teach the agent: context is what's true, skills are how to work. When to use each.
+- [Brand context](https://docs.superscale.ai/context/brand.md): Give Superscale your brand identity, guidelines, and voice so the agent has reliable source material.
+- [Products & offers](https://docs.superscale.ai/context/products.md): Describe what you sell so creatives are accurate, specific, and on-message.
+- [Audiences & ICPs](https://docs.superscale.ai/context/audiences.md): Define who you're selling to so the agent can choose sharper hooks, tone, and angles.
+- [Reference images & winning ads](https://docs.superscale.ai/context/reference-images.md): Feed Superscale visual references and proven winners to steer style, layout, product accuracy, and direction.
+- [Keeping context fresh](https://docs.superscale.ai/context/managing.md): Maintain and update your context as your brand, catalog, and learnings evolve.
+- [How Superscale works](https://docs.superscale.ai/how-it-works/overview.md): How research, creation, and media buying hand work off to each other.
+- [Competitive researcher](https://docs.superscale.ai/features/competitor-research.md): Find competitor ads, identify likely winners, choose better comparison brands, and turn research into creative briefs.
+- [Replicate a competitor's ad](https://docs.superscale.ai/features/ad-recreation.md): Recreate a proven image-ad structure for your brand using your own product, claims, and assets.
+- [Creative analysis](https://docs.superscale.ai/features/creative-analysis.md): Break down any ad into the hook, structure, proof, and patterns that make it work.
+- [Ad account audit](https://docs.superscale.ai/features/ad-account-audit.md): Connect your ad accounts and let Superscale surface what's working, what's fatiguing, and where spend is wasted.
+- [Creating statics](https://docs.superscale.ai/features/static-ads.md): Generate conversion-focused static ads from prompts, brand context, references, and source assets.
+- [Creating videos](https://docs.superscale.ai/features/video-ads.md): Generate, edit, and combine AI video, B-roll, scripts, voiceover, and captions into finished ads ready to export.
+- [Speaking characters](https://docs.superscale.ai/features/speaking-character.md): Creator-style videos where an AI character talks straight to camera: the classic UGC testimonial.
+- [Video context](https://docs.superscale.ai/features/video-context.md): Prepare scripts, footage, product references, voice, captions, and guardrails before spending video credits.
+- [Voiceover & lip-sync](https://docs.superscale.ai/features/voiceover-lipsync.md): Generate natural voiceover, localize ads, and control pronunciation.
+- [Scripts](https://docs.superscale.ai/features/scripts.md): How Superscale writes your ad scripts and storyboards, and how to steer them.
+- [Captions](https://docs.superscale.ai/features/captions.md): Styled, synced captions for supported videos, with brand defaults you control.
+- [Seedance 2](https://docs.superscale.ai/features/seedance-videos.md): The video engine behind Superscale. One storyboard becomes a full, multi-scene video with native audio.
+- [Iterate on a creative](https://docs.superscale.ai/features/iterate.md): Refine an ad without losing the parts that already work.
+- [Aspect ratios & export](https://docs.superscale.ai/features/formats-and-resizing.md): Export creatives for the placements and channels you need.
+- [Media buying](https://docs.superscale.ai/how-it-works/media-buying.md): How Superscale exports, publishes supported ad-platform actions, and keeps spend-changing actions under approval.
+- [Publishing](https://docs.superscale.ai/features/publishing.md): Move finished creatives from Superscale into your ad accounts with clear approval and control.
+- [Campaign structure](https://docs.superscale.ai/features/campaign-structure.md): Build clean campaign setups so creative tests produce readable results.
+- [Performance monitoring](https://docs.superscale.ai/features/performance-monitoring.md): Track winners, waste, fatigue, and the next creative actions.
+- [Projects & workspace](https://docs.superscale.ai/features/projects.md): Organize campaigns, creatives, and assets in one workspace built for ongoing ad production.
+- [Collaboration](https://docs.superscale.ai/features/collaboration.md): Invite your team to create, review, and ship ads together in one workspace.
+- [Asset Drive](https://docs.superscale.ai/features/asset-drive.md): Organize creative assets, references, product visuals, reports, and reusable context.
+- [Sharing](https://docs.superscale.ai/features/sharing.md): Share creatives, context, projects, and review links with teammates or clients.
+- [Schedule agent runs](https://docs.superscale.ai/features/scheduled-runs.md): Run recurring research, reporting, monitoring, and creative planning on a schedule.
+- [Custom skills](https://docs.superscale.ai/features/custom-skills.md): Teach the agent repeatable workflows, methods, and decision rules.
+- [Integrations overview](https://docs.superscale.ai/integrations/introduction.md): Connect ad platforms and data sources, and understand what each integration can read, publish, or automate.
+- [Integration capabilities](https://docs.superscale.ai/integrations/capabilities.md): What each integration can read, write, publish, or manage, and which actions require approval.
+- [Meta Ads](https://docs.superscale.ai/integrations/meta.md): Connect Facebook and Instagram ads so Superscale can analyze performance, build campaigns, and publish with your approval.
+- [Google Ads](https://docs.superscale.ai/integrations/google.md): Connect Google Ads so Superscale can analyze performance, build Search campaigns, set up Search or Display structures, and publish supported actions with your approval.
+- [TikTok Ads](https://docs.superscale.ai/integrations/tiktok.md): Connect TikTok Ads so Superscale can analyze performance, build video campaigns, and publish with your approval.
+- [Reddit Ads](https://docs.superscale.ai/integrations/reddit-ads.md): Planned Reddit Ads support for campaign creation, measurement, and management.
+- [X Ads](https://docs.superscale.ai/integrations/x-ads.md): Planned X Ads support for campaign creation, measurement, and management.
+- [LinkedIn Ads](https://docs.superscale.ai/integrations/linkedin-ads.md): Planned LinkedIn Ads support for campaign creation, measurement, and management.
+- [Shopify](https://docs.superscale.ai/integrations/shopify.md): Connect your store so Superscale builds ads from your real catalog, products, and sales. Read-only.
+- [Klaviyo](https://docs.superscale.ai/integrations/klaviyo.md): Planned Klaviyo support for email and SMS marketing signals.
+- [HubSpot](https://docs.superscale.ai/integrations/hubspot.md): Planned HubSpot support for CRM and lifecycle marketing signals.
+- [Google Analytics](https://docs.superscale.ai/integrations/google-analytics.md): Connect Google Analytics for website and funnel performance signals.
+- [TikTok organic](https://docs.superscale.ai/integrations/tiktok-organic.md): Connect TikTok to publish organic posts from Superscale.
+- [Instagram](https://docs.superscale.ai/integrations/instagram.md): Connect Instagram to publish organic posts and Reels.
+- [Slack](https://docs.superscale.ai/integrations/slack.md): Send Superscale updates, reports, and agent notifications to Slack.
+- [Notion](https://docs.superscale.ai/integrations/notion.md): Planned Notion support for briefs, plans, and knowledge-base context.
+- [Superscale for Agents](https://docs.superscale.ai/integrations/superscale-for-agents.md): Connect your own AI agent to Superscale's creative engine via API and MCP. Coming soon.
+- [Start here](https://docs.superscale.ai/best-practices/overview.md): How to get better research, creative, testing, and media buying from Superscale.
+- [Research best practices](https://docs.superscale.ai/best-practices/research.md): Get sharper insights from competitor research, ad account data, and market signals.
+- [Creation best practices](https://docs.superscale.ai/best-practices/creation.md): Get higher-converting, more on-brand creative from Superscale.
+- [Media buying on Meta](https://docs.superscale.ai/best-practices/media-buying.md): Fundamentals and current best practices for running paid ads on Meta, for marketers new to the channel.
+- [Overview](https://docs.superscale.ai/resources/troubleshooting/overview.md): Recurring issues real customers hit, and the fixes that worked, plus the patterns that keep performing.
+- [Brand & logo accuracy](https://docs.superscale.ai/resources/troubleshooting/logo-and-brand-accuracy.md): Keep logos, products, and packaging exact across generated creative.
+- [Getting video right in fewer tries](https://docs.superscale.ai/resources/troubleshooting/video-in-fewer-tries.md): Land the video you want without burning credits on regenerations.
+- [Concepts that perform](https://docs.superscale.ai/resources/troubleshooting/concepts-that-perform.md): Angles and formats that keep winning across accounts, and how to make them yours.
+- [Tutorial center](https://docs.superscale.ai/resources/tutorial-center.md): Use guided tutorials and walkthroughs to learn Superscale workflows.
+- [Expert library](https://docs.superscale.ai/resources/expert-library.md): Use curated expert plays, examples, and workflows as starting points for better creative work.
+- [Expert sessions](https://docs.superscale.ai/resources/expert-sessions.md): Prepare for hands-on help from a Superscale expert.
+- [Video tutorials](https://docs.superscale.ai/resources/video-tutorials.md): Watch walkthroughs of Superscale workflows and product concepts.
+- [Creative strategy](https://docs.superscale.ai/best-practices/creative-strategy.md): Build ads around hypotheses: audiences, pains, value propositions, hooks, formats, and winners.
+- [Common questions](https://docs.superscale.ai/resources/faq.md): Short answers to the questions that come up most often when setting up Superscale.
+- [Security & compliance](https://docs.superscale.ai/resources/security-and-compliance.md): How to think about privacy, data boundaries, commercial rights, legal review, and regulated ad workflows.
+- [Glossary](https://docs.superscale.ai/resources/glossary.md): Key Superscale, advertising, creative, and performance terms.
+- [Changelog](https://docs.superscale.ai/changelog.md): Everything new in Superscale — newest first.

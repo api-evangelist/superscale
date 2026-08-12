@@ -1,0 +1,102 @@
+generated: '2026-08-12'
+method: probed
+source: >-
+  live probes of docs.superscale.ai and mcp.superscale.ai discovery documents
+note: >-
+  Every `conforms: true` below is anchored to a document that was fetched and
+  parsed on 2026-08-12, not to a provider claim. Superscale's conformance
+  profile is unusual: it has no REST/OpenAPI conformance surface at all, and a
+  strong agent-protocol conformance surface. There is no published compliance
+  program (no SOC 2 / ISO 27001 / PCI / HIPAA / FedRAMP certification is
+  claimed anywhere on the site or docs), so no Compliance pointer is emitted.
+standards:
+- id: oauth2
+  conforms: true
+  evidence: >-
+    RFC 6749 authorization-code flow advertised at
+    https://superscale.ai/__clerk/oauth/authorize with token, revocation and
+    registration endpoints.
+- id: rfc8414-authorization-server-metadata
+  conforms: true
+  evidence: 'https://mcp.superscale.ai/.well-known/oauth-authorization-server returns 200 application/json with issuer, authorization_endpoint, token_endpoint, jwks_uri.'
+- id: rfc9728-protected-resource-metadata
+  conforms: true
+  evidence: >-
+    https://mcp.superscale.ai/.well-known/oauth-protected-resource and
+    /.well-known/oauth-protected-resource/mcp both return 200 application/json;
+    the MCP 401 emits WWW-Authenticate Bearer resource_metadata pointing at the
+    per-resource document.
+- id: rfc7636-pkce
+  conforms: true
+  evidence: code_challenge_methods_supported ["S256"]; key_challenges_supported declares urn:ietf:params:oauth:pkce:code_challenge with S256.
+- id: rfc7591-dynamic-client-registration
+  conforms: true
+  evidence: registration_endpoint https://superscale.ai/__clerk/oauth/register advertised in the authorization-server metadata.
+- id: openid-connect-core
+  conforms: partial
+  evidence: >-
+    The authorization server advertises the openid scope, RS256 id_token
+    signing and OIDC claims (sub, iss, aud, exp, iat, email, name, org_id), but
+    no /.well-known/openid-configuration document is served on any Superscale
+    host (404 on docs and mcp; SPA shell on the apex).
+- id: mcp
+  conforms: true
+  version: '2025-06-18'
+  evidence: >-
+    https://docs.superscale.ai/mcp answered POST initialize with
+    protocolVersion 2025-06-18, serverInfo {name Superscale, version 1.0.0} and
+    tools/resources capabilities; tools/list returned 3 tools with JSON Schema
+    draft-07 inputSchemas. https://mcp.superscale.ai/mcp answers the MCP
+    authorization spec's 401 + WWW-Authenticate pattern.
+- id: a2a-agent-card
+  conforms: true
+  version: '0.3'
+  grade: conformant
+  evidence: >-
+    https://docs.superscale.ai/.well-known/agent-card.json returns 200
+    application/json parsing as an AgentCard with capabilities as an object,
+    protocolVersion present and skills as an array. See a2a/superscale-a2a.yml.
+- id: agent-skills-discovery
+  conforms: true
+  version: 0.2.0
+  evidence: >-
+    https://docs.superscale.ai/.well-known/agent-skills/index.json declares
+    $schema https://schemas.agentskills.io/discovery/0.2.0/schema.json and a
+    sha256-digested skill-md entry; the digest was independently verified
+    against the fetched skill.md.
+- id: llmstxt
+  conforms: true
+  evidence: >-
+    https://superscale.ai/llms.txt (8.5KB) and https://docs.superscale.ai/llms.txt
+    (13.3KB) both return 200 text/plain in llms.txt format; a 340KB
+    llms-full.txt is also served on the docs host.
+- id: rfc9116-security-txt
+  conforms: partial
+  evidence: >-
+    https://superscale.ai/.well-known/security.txt returns 200 with Contact,
+    Expires and Preferred-Languages, but Expires is 2026-08-08T23:59:00.000Z —
+    the document was expired at probe time (2026-08-12).
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: 'Error bodies observed are bare JSON {"error":"Unauthorized"}, not application/problem+json.'
+- id: openapi
+  conforms: false
+  evidence: No OpenAPI or Swagger document is served on any host; the docs corpus never mentions one.
+- id: asyncapi
+  conforms: false
+  evidence: No event, streaming or webhook surface is published; not applicable to this product.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No deprecation or sunset policy is published.
+- id: rfc9727-api-catalog
+  conforms: false
+  evidence: /.well-known/api-catalog returns 404 on docs and mcp hosts and the SPA shell on the apex.
+compliance_program:
+  published: false
+  note: >-
+    https://docs.superscale.ai/resources/security-and-compliance is customer
+    guidance on brand-safety, claim rules and human-in-the-loop approval for
+    regulated ad categories — it is not a certification page. It refers users to
+    "your agreement, DPA, and subprocessors" without publishing them. No trust
+    center exists (trust./security./compliance. probes all miss), and no named
+    certification appears anywhere on the public surface.

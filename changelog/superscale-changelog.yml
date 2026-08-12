@@ -1,0 +1,123 @@
+generated: '2026-08-12'
+method: searched
+source: https://docs.superscale.ai/changelog
+format: dated product changelog (Mintlify <Update> entries, newest first)
+scheme: date-based
+scheme_note: >-
+  Entries are labelled by release date and tagged by area (Platform, Creatives,
+  Integrations, Media buying, Research, Creation, E-com). There is no semantic
+  API version — Superscale ships a product, not a versioned contract, and the
+  changelog does not distinguish breaking from additive changes because there is
+  no published contract to break.
+current_version: null
+machine_readable: false
+machine_readable_note: No changelog feed (RSS/Atom/JSON) is served; the page is the only surface.
+window: 2026-03-05 to 2026-07-23
+entry_count: 14
+entries:
+- date: '2026-07-23'
+  tags: [Platform]
+  title: New plan lineup
+  highlights:
+  - Four plans introduced — Advanced $99, Pro $199, Scale $399, Enterprise $799+.
+  - Ad-account integrations (Meta, Google, TikTok, Shopify) included from Pro upward.
+  - The Superscale MCP included from Pro upward.
+  - Brands/team members scale by tier — 1/2, 5/5, 15/15, unlimited.
+  breaking: false
+  significance: >-
+    The only dated, provider-published confirmation that the MCP server is a
+    shipped, entitled product feature. The "Superscale for Agents" docs page
+    still says coming soon.
+- date: '2026-07-10'
+  tags: [Platform, Creatives, E-com]
+  title: Agentic context files, new dashboard, Meta performance flow, integrations
+  highlights:
+  - Create and update Context files directly from chat; agent can author brand guidelines from winning-ad images.
+  - Naming conventions saved as a Context file and applied to every generated asset.
+  - Homepage rebuilt around the onboarding goal with pre-written prompts per step.
+  - Meta account data surfaced in the dashboard alongside creation.
+  - Shopify, Google Analytics and Klaviyo connections added.
+  breaking: false
+- date: '2026-06-22'
+  tags: [Platform, Creatives, E-com]
+  title: New approval flow, channel-specific generations, multi-product, logo accuracy
+  highlights:
+  - Every creative moves through a Review to Approve flow before it goes anywhere.
+  - Approval auto-generates all placements for the selected channel in correct safe zones.
+  - Multi-product tagging with "@" for combined or bundle ads.
+  - Logo usage descriptions under Context and Skills, Brand.
+  breaking: false
+- date: '2026-05-13'
+  tags: [Platform]
+  title: Skills
+  highlights:
+  - Save an entire workflow — reference files, creative formulas, research steps, evaluation criteria, output specs — and run it with one prompt.
+  breaking: false
+- date: '2026-04-30'
+  tags: [Media buying, Research, Creation, Platform]
+  title: Ad copy, deeper competitor data, new creative
+  highlights:
+  - Generated ads ship with primary texts, headlines and descriptions per Meta or Google objective.
+  - Competitor research surfaces reach, growth trends, run dates, age targeting and platform breakdown.
+  - 50+ new AI characters and custom voice presets.
+  - In-product live chat.
+  breaking: false
+- date: '2026-04-23'
+  tags: [Creation, Integrations]
+  title: Video Agent with Seedance, Google Ads
+  highlights:
+  - Short video generation in Agent Chat powered by the Seedance model.
+  - Google Ads integration live.
+  - Static editing added; static cost dropped from 50 to 35 credits.
+  breaking: false
+- date: '2026-04-15'
+  tags: [Platform]
+  title: Agent Context
+  highlights:
+  - New Context page for brand and product context and instructions.
+  breaking: false
+- date: '2026-04-06'
+  tags: [Platform]
+  title: Star your generations
+  highlights: [Star and filter generations; redesigned preview modal.]
+  breaking: false
+- date: '2026-04-01'
+  tags: [Platform, Integrations]
+  title: The new Superscale design
+  highlights:
+  - Platform-wide redesign; projects, pinning, per-chat overview pages, CMD+K.
+  - Google Ads connection on Advanced and above.
+  - Tutorial library, referral program (3,000 credits per referred subscription).
+  breaking: false
+- date: '2026-03-26'
+  tags: [Creation, Platform]
+  title: Manage generations in a task
+  highlights: [Download all, hide generations, upscale to 1.91:1.]
+  breaking: false
+- date: '2026-03-18'
+  tags: [Platform]
+  title: New superscale.ai homepage
+  breaking: false
+- date: '2026-03-13'
+  tags: [Platform]
+  title: Bulk-edit asset labels
+  breaking: false
+- date: '2026-03-06'
+  tags: [Research, Platform]
+  title: Fast and Pro modes for Agent tasks
+  highlights: [Fast does lighter trend/competitor research; Pro reviews all relevant ads.]
+  breaking: false
+- date: '2026-03-05'
+  tags: [Creation, Platform]
+  title: Nano Banana 2, new Agent homepage
+  highlights: [Image model upgraded to Nano Banana 2; new Agent homepage with prompt suggestions.]
+  breaking: false
+cadence:
+  note: >-
+    Roughly two dated releases per month across the captured window, with no
+    gap longer than five weeks — an actively maintained changelog.
+model_transparency:
+  note: >-
+    Unusually for an AI product, the changelog names the underlying models it
+    switches to (Nano Banana 2 for images, Seedance / Seedance 2 for video),
+    which is material to an integrator planning around output characteristics.

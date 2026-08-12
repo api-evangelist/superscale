@@ -1,0 +1,68 @@
+generated: '2026-08-12'
+method: probed
+source: https://docs.superscale.ai/.well-known/agent-card.json
+discovery:
+  path: /.well-known/agent-card.json
+  canonical: true
+  host: docs.superscale.ai
+  note: >-
+    Served from the provider's own documentation host (docs.superscale.ai, a
+    Superscale-controlled subdomain). The card names itself as Superscale:
+    provider.organization "Superscale", provider.url and url both
+    https://docs.superscale.ai/. The apex host superscale.ai answers 200 with the
+    Next.js SPA HTML shell for every /.well-known/* path and was rejected as a
+    false positive; mcp.superscale.ai returns a real 404 for both card paths.
+conformance:
+  spec: A2A 1.0.0
+  grade: conformant
+  protocol_version: '0.3'
+  preferred_transport: HTTP+JSON
+  hard_checks:
+    capabilities_is_object: true
+    protocol_version_present: true
+    skills_is_array: true
+  deviations:
+  - id: supportedInterfaces-instead-of-additionalInterfaces
+    detail: >-
+      The card uses the pre-1.0 `supportedInterfaces` key rather than the A2A
+      1.0.0 `additionalInterfaces`. Consistent with the declared
+      protocolVersion "0.3"; not a hard-check failure.
+  - id: skills-tags-empty
+    detail: The single skill declares an empty `tags` array.
+card:
+  name: Superscale
+  description: >-
+    Superscale is an autonomous AI marketing agent that researches, creates, and
+    runs your paid ads.
+  url: https://docs.superscale.ai/
+  version: 1.0.0
+  documentation_url: https://docs.superscale.ai/
+  capabilities:
+    streaming: false
+    push_notifications: false
+  default_input_modes:
+  - text/plain
+  default_output_modes:
+  - text/plain
+  skills: 1
+  file: superscale-agent-card.json
+skills:
+- id: superscale
+  name: Superscale
+  url: https://docs.superscale.ai/.well-known/agent-skills/superscale/skill.md
+  harvested_to: skills/superscale-superscale.md
+related_surfaces:
+  agent_skills_index: https://docs.superscale.ai/.well-known/agent-skills/index.json
+  docs_mcp: https://docs.superscale.ai/mcp
+  product_mcp: https://mcp.superscale.ai/mcp
+notes: >-
+  The card advertises a documentation/knowledge agent surface rather than an A2A
+  task endpoint — url and every supportedInterfaces entry point at the docs root,
+  and capabilities declares no streaming and no push notifications. Its one skill
+  is a real, fetchable Agent Skill document (see skills/).
+x-evidence:
+  fetched: '2026-08-12'
+  url: https://docs.superscale.ai/.well-known/agent-card.json
+  http_status: 200
+  content_type: application/json
+  content_length: 1200

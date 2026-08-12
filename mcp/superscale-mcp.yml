@@ -1,0 +1,115 @@
+generated: '2026-08-12'
+method: searched
+status: published
+source: >-
+  https://docs.superscale.ai/.well-known/mcp.json,
+  https://mcp.superscale.ai/.well-known/oauth-protected-resource,
+  https://docs.superscale.ai/billing/plans,
+  https://docs.superscale.ai/changelog
+summary: >-
+  Superscale operates two distinct Model Context Protocol surfaces on its own
+  hosts. (1) The PRODUCT MCP server at https://mcp.superscale.ai/mcp is live and
+  OAuth-gated — it answers HTTP 401 with an RFC 9728 `WWW-Authenticate: Bearer
+  resource_metadata=...` challenge and publishes full RFC 8414 / RFC 9728
+  discovery metadata anonymously. The provider's own plans page and the
+  2026-07-23 changelog entry both state "the Superscale MCP" is included from
+  the Pro plan upward, which is what makes this a shipped surface rather than a
+  test host. (2) The DOCUMENTATION MCP server at https://docs.superscale.ai/mcp
+  is anonymous and its full tool list was introspected live.
+servers:
+- name: superscale-product
+  role: product
+  transport: http
+  url: https://mcp.superscale.ai/mcp
+  status: published
+  authentication:
+    required: true
+    scheme: oauth2
+    provider: Clerk
+    authorization_server: https://superscale.ai/__clerk
+    protected_resource_metadata: https://mcp.superscale.ai/.well-known/oauth-protected-resource/mcp
+    challenge: 'WWW-Authenticate: Bearer resource_metadata=https://mcp.superscale.ai/.well-known/oauth-protected-resource/mcp'
+  entitlement: Pro plan and above (per https://docs.superscale.ai/billing/plans)
+  tools_introspected: false
+  tools_note: >-
+    `initialize` and `tools/list` both return HTTP 401 {"error":"Unauthorized"}
+    with x-clerk-auth-reason "session-token-and-uat-missing". The live tool
+    schemas require an authenticated OAuth session, so NO tool list is recorded
+    here — the capabilities below are the provider's own prose description of
+    what the MCP exposes, not introspected tool names, and must not be read as
+    an inputSchema-bearing manifest.
+  documented_capabilities:
+  - Generate ads (statics, UGC video, scripts) from an external agent using
+    context the calling agent supplies
+  - Read live ad-account performance from connected Meta, TikTok and Google Ads
+    accounts for reporting and research
+  - Run competitive ad research
+  - Trigger the above on a schedule from an external agent runtime
+  capabilities_source: https://docs.superscale.ai/integrations/superscale-for-agents
+  x-evidence:
+  - {url: 'https://mcp.superscale.ai/mcp', method: 'POST tools/list', http_status: 401, body: '{"error":"Unauthorized"}'}
+  - {url: 'https://mcp.superscale.ai/.well-known/oauth-protected-resource', http_status: 200, content_type: application/json}
+  - {url: 'https://mcp.superscale.ai/.well-known/oauth-authorization-server', http_status: 200, content_type: application/json}
+- name: superscale-docs
+  role: documentation
+  transport: http
+  url: https://docs.superscale.ai/mcp
+  origin_url: https://superscale.main-kill-isr.mintlify.me/mcp
+  origin_note: >-
+    Declared in the provider's own /.well-known/mcp.json, which names the
+    Mintlify origin. The server is reachable at the Superscale-controlled
+    hostname docs.superscale.ai/mcp and its serverInfo.name is "Superscale";
+    it is the Mintlify-provided documentation-search server for this docs site,
+    not the Superscale product API.
+  status: published
+  authentication:
+    required: false
+  protocol_version: '2025-06-18'
+  server_info: {name: Superscale, version: 1.0.0}
+  server_capabilities: {tools: true, resources: true}
+  tools_introspected: true
+  tools_file: superscale-docs-mcp-tools.json
+  tools:
+  - name: search_superscale
+    title: Search documentation
+    description: >-
+      Search across the Superscale knowledge base to find relevant information,
+      code examples, API references, and guides.
+    input_schema: {query: string (required)}
+    annotations: {readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false}
+  - name: query_docs_filesystem_superscale
+    description: >-
+      Read-only shell-like query against a virtualized in-memory filesystem
+      containing only the Superscale documentation pages.
+    input_schema: {command: string (required)}
+  - name: submit_feedback
+    description: Report an incorrect, outdated, confusing or incomplete docs page to the docs team.
+    input_schema: {path: string, feedback: string}
+  x-evidence:
+  - {url: 'https://docs.superscale.ai/mcp', method: 'POST initialize', http_status: 200, content_type: text/event-stream}
+  - {url: 'https://docs.superscale.ai/mcp', method: 'POST tools/list', http_status: 200, tools_returned: 3}
+  - {url: 'https://docs.superscale.ai/.well-known/mcp.json', http_status: 200, content_type: application/json}
+documentation_conflict:
+  note: >-
+    https://docs.superscale.ai/integrations/superscale-for-agents still reads
+    "Superscale for Agents is coming soon ... Request early access to be notified
+    when the API and MCP server are available", and the FAQ repeats it. That page
+    is stale: the plans page and the 2026-07-23 changelog both ship the MCP on
+    Pro and above, and mcp.superscale.ai is live and answering an OAuth
+    challenge. Recorded as a provider documentation inconsistency, not as an
+    absence of the surface.
+  evidence:
+  - {url: 'https://docs.superscale.ai/integrations/superscale-for-agents', http_status: 200, says: coming-soon}
+  - {url: 'https://docs.superscale.ai/billing/plans', http_status: 200, says: 'the Superscale MCP start on Pro'}
+  - {url: 'https://docs.superscale.ai/changelog', http_status: 200, says: 'the Superscale MCP are included from the Pro plan upward (2026-07-23)'}
+  - {url: 'https://mcp.superscale.ai/mcp', http_status: 401, says: live-and-gated}
+rest_api:
+  published: false
+  note: >-
+    No REST OpenAPI surface exists. /openapi.json, /openapi.yaml, /swagger.json
+    and /api-docs on superscale.ai all return the SPA HTML shell (200, 205KB
+    text/html); the same paths on docs.superscale.ai return 404 "Asset not
+    found"; api.superscale.ai does not resolve (NXDOMAIN). The complete 340KB
+    docs corpus (llms-full.txt) contains zero occurrences of "openapi",
+    "swagger", "api key", "bearer", "base url" or "rate limit". The API half of
+    "Superscale for Agents" has not shipped; the MCP half has.

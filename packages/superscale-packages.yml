@@ -1,0 +1,38 @@
+generated: '2026-08-12'
+method: searched
+source: registry searches + https://github.com/superscale-ai + the full docs corpus
+package_count: 0
+official_package_count: 0
+packages: []
+note: >-
+  Superscale ships no client libraries in any public package registry. This is
+  an honest recorded zero, not an unchecked field: every registry below was
+  queried on 2026-08-12 and the docs corpus was searched. There is nothing to
+  wrap — the product has no REST API, and its MCP server is consumed by an MCP
+  client over HTTP with OAuth discovery, which requires no vendor SDK by design.
+  No SDKs pointer is emitted.
+registries_checked:
+- {registry: npm, query: superscale, result: no first-party package, http_status: 200}
+- {registry: pypi, package: superscale, result: absent, http_status: 404}
+- {registry: rubygems, result: not published}
+- {registry: crates.io, result: not published}
+- {registry: packagist, result: not published}
+- {registry: nuget, result: not published}
+- {registry: maven-central, result: not published}
+- {registry: pkg.go.dev, result: not published}
+source_repositories:
+  github_org: https://github.com/superscale-ai
+  github_org_status: 200
+  public_repos: 0
+  org_created: '2024-11-29'
+  note: >-
+    The GitHub organization exists and is owned by the company (blog field
+    resolves to https://superscale.ai) but publishes zero public repositories.
+    There is no open-source surface, no published .proto, and no SDK source.
+distribution:
+  mcp_client: >-
+    The product MCP server is reached at https://mcp.superscale.ai/mcp with any
+    standards-compliant MCP client; authorization is discovered via RFC 9728
+    metadata and the client can self-register through the Clerk dynamic client
+    registration endpoint. No Superscale-published client package exists or is
+    required.

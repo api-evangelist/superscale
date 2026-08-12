@@ -69,7 +69,7 @@ Real performance results from Superscale customers:
 
 ## Pricing
 
-Superscale starts at $49/month with a free tier available. No credit card required to start. First ad results are delivered within minutes. Plans scale based on creative output capacity to match team needs — from solopreneurs to agencies and enterprise growth teams.
+Superscale starts at $49/month with a free tier available. No credit card required to start. Every signed-in account can connect currently available integrations. Superscale MCP is available on every plan. First ad results are delivered within minutes. Plans scale based on creative output capacity to match team needs — from solopreneurs to agencies and enterprise growth teams.
 
 - [Pricing Page](https://superscale.ai/pricing)
 
@@ -86,11 +86,11 @@ Superscale starts at $49/month with a free tier available. No credit card requir
 
 Superscale is backed by leading investors and companies including Interface Capital, S16VC, Creandum, Kapten and Son, Lovable, OMR, HelloFresh, Lanch, and ElevenLabs.
 
-## Coming Soon — Superscale for Agents (API / MCP)
+## Superscale MCP for Agents
 
-Superscale is building API and MCP (Model Context Protocol) integrations so that external AI agents — such as Claude, OpenClaw, and custom agent workflows — can programmatically access Superscale's creative engine for automated ad generation and optimization.
+Superscale MCP (Model Context Protocol) is available on every plan. External AI agents and clients — including Claude, Codex, OpenClaw, and custom agent workflows — can access Superscale's creative engine and connected marketing data. A traditional public REST API is not currently offered.
 
-- [Request Early Access](https://superscale.ai/#agent-section)
+- [Request REST API Early Access](https://superscale.ai/#agent-section)
 
 ## Company Information
 

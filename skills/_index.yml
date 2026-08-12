@@ -1,0 +1,50 @@
+generated: '2026-08-12'
+method: searched
+source: https://docs.superscale.ai/.well-known/agent-skills/index.json
+note: >-
+  Provider-published. Superscale serves an Agent Skills discovery document at
+  /.well-known/agent-skills/index.json on its documentation host, conforming to
+  the Agent Skills discovery schema 0.2.0
+  (https://schemas.agentskills.io/discovery/0.2.0/schema.json). The skill below
+  was fetched verbatim and its sha256 digest was verified against the digest the
+  provider publishes in that index — no API Evangelist authoring is present in
+  this file or in the skill markdown. The same skill is referenced from the A2A
+  agent card (a2a/superscale-a2a.yml).
+discovery:
+  url: https://docs.superscale.ai/.well-known/agent-skills/index.json
+  schema: https://schemas.agentskills.io/discovery/0.2.0/schema.json
+  file: ../well-known/superscale-agent-skills-index.json
+  http_status: 200
+skills:
+- file: superscale-superscale.md
+  name: Superscale
+  id: superscale
+  type: skill-md
+  version: '1.0'
+  description: >-
+    Use Superscale when building, testing, and scaling performance advertising
+    campaigns. Reach for this skill when you need to research competitor ads,
+    generate static or video creative, publish to ad platforms, monitor campaign
+    performance, or automate recurring marketing workflows.
+  source: https://docs.superscale.ai/.well-known/agent-skills/superscale/skill.md
+  digest: sha256:6c1c89518f399a09fc5b455b68d3be0d18a555c8a32da524f1f332ab4d9d6f15
+  digest_verified: true
+  digest_verified_on: '2026-08-12'
+  http_status: 200
+  content_type: text/markdown
+  bytes: 12412
+  sections:
+  - Product summary
+  - When to use
+  - Quick reference
+  - Decision guidance
+  - Workflow
+  - Common gotchas
+  - Verification checklist
+  - Resources
+grounding:
+  openapi: null
+  note: >-
+    Superscale publishes no OpenAPI, so no additional API Evangelist skills were
+    generated — there are no operationIds to ground them in. Only the
+    provider's own skill is carried here.

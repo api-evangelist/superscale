@@ -1,38 +1,43 @@
 aid: superscale
 name: Superscale
 description: >-
-  Superscale is an AI-powered marketing platform that generates full,
-  ready-to-launch ad creatives from a single prompt. A user pastes a product URL
-  (App Store, Shopify, website, or Lovable project) and describes what they need;
-  the autonomous Superscale Agent then researches winning ads in the niche, writes
-  copy and scripts, produces AI UGC videos and static image ads, adds captions and
-  finishing touches, and resizes every asset to all required aspect ratios for
-  Meta, TikTok, Google, YouTube, and X. It serves mobile-app marketers, e-commerce
-  brands, SaaS companies, agencies, and growth teams. Superscale is Europe-based and
-  backed by Interface Capital, S16VC, Creandum, Lovable, and ElevenLabs. Public
-  API and MCP integrations for external AI agents are announced as coming soon.
+  Superscale is an autonomous AI marketing agent for performance advertising. A
+  user gives it a product URL (App Store, Shopify, website, or Lovable project)
+  and a brief; the agent then researches competitor ads in the niche, writes copy
+  and scripts, produces AI UGC videos and static image ads, adds captions and
+  finishing touches, resizes every asset to the required aspect ratios, and —
+  where ad accounts are connected — builds and publishes campaigns on Meta,
+  Google and TikTok behind a blocking human approval step. It serves mobile-app
+  marketers, e-commerce brands, SaaS companies, agencies and growth teams.
+  Superscale is Europe-based and backed by Interface Capital, S16VC, Creandum,
+  Lovable and ElevenLabs. Its machine-readable surface is agent-native rather
+  than REST: an OAuth-gated Model Context Protocol server at mcp.superscale.ai
+  (included from the Pro plan upward), an anonymous documentation MCP server, a
+  conformant A2A agent card, and a published Agent Skill — with no OpenAPI.
 url: https://raw.githubusercontent.com/api-evangelist/superscale/refs/heads/main/apis.yml
 accessModel:
-  pricing: unknown
-  onboarding: unknown
-  trial: false
-  try_now: false
-  public: false
-  label: Unknown
-  confidence: low
-  source: []
-  generated: '2026-07-22'
-  method: derived
+  pricing: freemium
+  onboarding: self-service
+  trial: true
+  try_now: true
+  public: true
+  label: Freemium
+  confidence: high
+  source:
+  - https://docs.superscale.ai/billing/plans
+  - https://superscale.ai/pricing
+  generated: '2026-08-12'
+  method: searched
 image: https://superscale.ai/images/og-images/default-og-image.jpg
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - creandum
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: live-mcp-and-agent-card
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-21'
+modified: '2026-08-12'
 tags:
 - Company
 - Ai
@@ -42,7 +47,60 @@ tags:
 - Creative
 - AdTech
 - SaaS
-apis: []
+- Agents
+- MCP
+- A2A
+- Agent Skills
+- Advertising Technology
+- Video Generation
+- Media Buying
+apis:
+- name: Superscale MCP Server
+  description: >-
+    The product Model Context Protocol server. Lets an external agent runtime
+    (Claude and similar MCP clients) drive Superscale's creative engine —
+    generating statics, UGC video and scripts from context the calling agent
+    supplies, reading live performance from connected Meta, TikTok and Google Ads
+    accounts, and running competitive research — then schedule those jobs on a
+    cadence. Live and OAuth-gated: an unauthenticated call returns HTTP 401 with
+    an RFC 9728 WWW-Authenticate challenge naming its protected-resource
+    metadata. Included from the Pro plan upward. Tool schemas require an
+    authenticated session and are therefore not captured.
+  humanURL: https://docs.superscale.ai/integrations/superscale-for-agents
+  baseURL: https://mcp.superscale.ai/mcp
+  image: https://superscale.ai/images/og-images/default-og-image.jpg
+  tags:
+  - MCP
+  - Agents
+  - Advertising
+  - Creative Generation
+  properties:
+  - type: MCPServer
+    url: mcp/superscale-mcp.yml
+  - type: Authentication
+    url: authentication/superscale-authentication.yml
+  - type: OAuthScopes
+    url: scopes/superscale-scopes.yml
+- name: Superscale Documentation MCP Server
+  description: >-
+    An anonymous Model Context Protocol server served from Superscale's own
+    documentation host, providing search and retrieval over the published
+    Superscale knowledge base. Introspected live on 2026-08-12: MCP protocol
+    version 2025-06-18, serverInfo "Superscale" 1.0.0, three tools with real
+    JSON Schema input schemas (search_superscale, query_docs_filesystem_superscale,
+    submit_feedback). Read-only apart from docs feedback. Provided by the
+    Mintlify documentation platform and declared in Superscale's own
+    /.well-known/mcp.json.
+  humanURL: https://docs.superscale.ai/
+  baseURL: https://docs.superscale.ai/mcp
+  image: https://superscale.ai/images/og-images/default-og-image.jpg
+  tags:
+  - MCP
+  - Documentation
+  - Search
+  properties:
+  - type: MCPServer
+    url: mcp/superscale-mcp.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -51,8 +109,16 @@ maintainers:
 common:
 - type: Website
   url: https://www.superscale.ai/
+- type: DeveloperPortal
+  url: https://docs.superscale.ai/
+- type: Documentation
+  url: https://docs.superscale.ai/
+- type: GettingStarted
+  url: https://docs.superscale.ai/getting-started/quickstart
 - type: Pricing
   url: https://superscale.ai/pricing
+- type: SignUp
+  url: https://superscale.ai/signup
 - type: Login
   url: https://superscale.ai/login
 - type: TermsOfService
@@ -63,12 +129,22 @@ common:
   url: https://superscale.ai/news
 - type: Support
   url: mailto:support@superscale.ai
+- type: HelpCenter
+  url: https://docs.superscale.ai/resources/faq
+- type: GitHubOrganization
+  url: https://github.com/superscale-ai
 - type: StatusPage
   url: https://status.superscale.ai/
+- type: ChangeLog
+  url: https://docs.superscale.ai/changelog
+- type: ChangeLog
+  url: changelog/superscale-changelog.yml
 - type: Lifecycle
   url: lifecycle/superscale-lifecycle.yml
 - type: LLMsTxt
   url: llms/superscale-llms.txt
+- type: LLMsTxt
+  url: llms/superscale-docs-llms.txt
 - type: WellKnown
   url: well-known/superscale-well-known.yml
 - type: SecurityTxt
@@ -79,8 +155,26 @@ common:
   url: well-known/superscale-security.txt
 - type: DomainSecurity
   url: security/superscale-domain-security.yml
+- type: AgentCard
+  url: a2a/superscale-a2a.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: MCPServer
+  url: mcp/superscale-mcp.yml
+- type: Authentication
+  url: authentication/superscale-authentication.yml
+- type: OAuthScopes
+  url: scopes/superscale-scopes.yml
+- type: Conformance
+  url: conformance/superscale-conformance.yml
+- type: Conventions
+  url: conventions/superscale-conventions.yml
+- type: Plans
+  url: plans/superscale-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/superscale-rate-limits.yml
 x-enrichment:
-  date: '2026-07-21'
+  date: '2026-08-12'
   status: enriched
-  artifacts_added: 6
+  artifacts_added: 19
   pass: local-v1

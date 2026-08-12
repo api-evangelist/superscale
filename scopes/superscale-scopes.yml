@@ -1,0 +1,79 @@
+generated: '2026-08-12'
+method: probed
+source: >-
+  https://mcp.superscale.ai/.well-known/oauth-authorization-server,
+  https://mcp.superscale.ai/.well-known/oauth-protected-resource/mcp
+note: >-
+  Read from the live OAuth discovery documents Superscale serves anonymously in
+  front of its MCP server, not from an OpenAPI oauth2 flow block (there is no
+  OpenAPI). Superscale publishes no human-readable scopes reference page — the
+  discovery metadata is the only scope surface, so descriptions below are the
+  standard OIDC / Clerk meanings of each identifier, marked as such. No
+  Superscale-specific product scopes (create-ads, read-performance, publish,
+  etc.) are advertised: the authorization server is a Clerk identity tenant and
+  the scopes are identity scopes, with product entitlement enforced separately
+  by subscription plan.
+docs: null
+docs_note: >-
+  No scopes/permissions reference page exists. Searched the full 340KB docs
+  corpus (docs.superscale.ai/llms-full.txt) — zero matches for "scope",
+  "permission" in an API-authorization sense.
+schemes:
+- name: superscale-mcp-oauth2
+  source: https://mcp.superscale.ai/.well-known/oauth-authorization-server
+  issuer: https://superscale.ai/__clerk
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://superscale.ai/__clerk/oauth/authorize
+    tokenUrl: https://superscale.ai/__clerk/oauth/token
+scopes:
+- scope: openid
+  description: OIDC — request an ID token for the authenticating user (standard OIDC scope).
+  flows: [authorizationCode]
+  advertised_by: [authorization-server]
+  standard: true
+- scope: profile
+  description: OIDC — basic profile claims (name) for the authenticating user (standard OIDC scope).
+  flows: [authorizationCode]
+  advertised_by: [authorization-server, protected-resource]
+  standard: true
+- scope: email
+  description: OIDC — the authenticating user's email address (standard OIDC scope).
+  flows: [authorizationCode]
+  advertised_by: [authorization-server, protected-resource]
+  standard: true
+- scope: public_metadata
+  description: Clerk — read the user's public metadata object.
+  flows: [authorizationCode]
+  advertised_by: [authorization-server]
+  standard: false
+  vendor: Clerk
+- scope: private_metadata
+  description: Clerk — read the user's private metadata object.
+  flows: [authorizationCode]
+  advertised_by: [authorization-server]
+  standard: false
+  vendor: Clerk
+- scope: offline_access
+  description: OAuth — issue a refresh token so the client can act without the user present.
+  flows: [authorizationCode]
+  advertised_by: [authorization-server]
+  standard: true
+- scope: user:org:read
+  description: Clerk — read the organizations the user belongs to (maps to the org_id claim).
+  flows: [authorizationCode]
+  advertised_by: [authorization-server]
+  standard: false
+  vendor: Clerk
+resource_scopes:
+  resource: https://mcp.superscale.ai/mcp
+  scopes_supported: [profile, email]
+  note: >-
+    The protected-resource document narrows to two of the seven scopes the
+    authorization server advertises. It declares
+    authorization_data_types_supported [oauth_scope] and accepts authorization
+    data in header or body.
+coverage:
+  scopes_total: 7
+  product_specific: 0
+  identity_only: true
