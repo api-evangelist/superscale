@@ -15,6 +15,17 @@ description: >-
   (included from the Pro plan upward), an anonymous documentation MCP server, a
   conformant A2A agent card, and a published Agent Skill — with no OpenAPI.
 url: https://raw.githubusercontent.com/api-evangelist/superscale/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-service
