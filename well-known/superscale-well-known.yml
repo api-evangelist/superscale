@@ -1,19 +1,30 @@
-generated: '2026-08-12'
+generated: '2026-09-19'
 method: searched
 source: live probes of /.well-known/* on every Superscale host
-supersedes: >-
-  The 2026-07-21 pass probed only superscale.ai and recorded five SPA-shell
-  200s. This pass probed docs.superscale.ai, app.superscale.ai and
-  mcp.superscale.ai as well and found four REAL documents that the apex-only
-  probe could not see.
+supersedes: The 2026-07-21 pass probed only superscale.ai and recorded five SPA-shell 200s. This pass
+  probed docs.superscale.ai, app.superscale.ai and mcp.superscale.ai as well and found four REAL documents
+  that the apex-only probe could not see.
 hosts:
 - https://superscale.ai
 - https://app.superscale.ai
 - https://docs.superscale.ai
 - https://mcp.superscale.ai
+- host: https://mcp.superscale.ai
+  documents:
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    file: superscale-mcp-oauth-protected-resource.json
+    bytes: 733
+  path_echo_control: passed
+- host: https://superscale.ai
+  documents:
+  - path: /__clerk/.well-known/oauth-authorization-server
+    status: 200
+    file: superscale-superscale-oauth-authorization-server.json
+    bytes: 1245
+  path_echo_control: passed
 real_documents: 6
 documents:
-# ---- docs.superscale.ai — the real discovery surface ----
 - host: https://docs.superscale.ai
   path: /.well-known/agent-card.json
   status: 200
@@ -61,7 +72,6 @@ documents:
 - host: https://docs.superscale.ai
   path: /.well-known/agent.json
   status: 404
-# ---- mcp.superscale.ai — OAuth discovery, served anonymously ----
 - host: https://mcp.superscale.ai
   path: /.well-known/oauth-authorization-server
   status: 200
@@ -82,10 +92,8 @@ documents:
   content_type: application/json
   real: true
   kind: RFC 9728 protected-resource metadata (per-resource)
-  note: >-
-    Identical shape to the root document with resource
-    https://mcp.superscale.ai/mcp. This is the URL named in the
-    WWW-Authenticate challenge returned by the MCP endpoint.
+  note: Identical shape to the root document with resource https://mcp.superscale.ai/mcp. This is the
+    URL named in the WWW-Authenticate challenge returned by the MCP endpoint.
 - host: https://mcp.superscale.ai
   path: /.well-known/security.txt
   status: 404
@@ -104,7 +112,6 @@ documents:
 - host: https://mcp.superscale.ai
   path: /.well-known/agent.json
   status: 404
-# ---- superscale.ai / app.superscale.ai — SPA catch-all, one real file ----
 - host: https://superscale.ai
   path: /.well-known/security.txt
   status: 200
@@ -112,12 +119,9 @@ documents:
   real: true
   kind: RFC 9116 security.txt
   file: superscale-security.txt
-  note: >-
-    Also served identically from https://app.superscale.ai. EXPIRED — the
-    Expires field is 2026-08-08T23:59:00.000Z, four days before this probe
-    (2026-08-12). RFC 9116 says a security.txt past its Expires date should
-    not be relied upon. The contact address itself still resolves and is
-    recorded in security/superscale-vulnerability-disclosure.yml.
+  note: Also served identically from https://app.superscale.ai. EXPIRED — the Expires field is 2026-08-08T23:59:00.000Z,
+    four days before this probe (2026-08-12). RFC 9116 says a security.txt past its Expires date should
+    not be relied upon. The contact address itself still resolves and is recorded in security/superscale-vulnerability-disclosure.yml.
 - host: https://superscale.ai
   path: /.well-known/openid-configuration
   status: 200
@@ -142,16 +146,27 @@ documents:
   path: /.well-known/agent-card.json
   status: 200
   real: false
-  note: >-
-    Next.js SPA HTML shell. REJECTED as an agent card — the apex answers 200
-    with the same 205KB HTML body for every /.well-known/* path including
-    /.well-known/agent.json and even
-    /.well-known/agent-skills/superscale/skill.md. The genuine card is on
-    docs.superscale.ai.
+  note: Next.js SPA HTML shell. REJECTED as an agent card — the apex answers 200 with the same 205KB HTML
+    body for every /.well-known/* path including /.well-known/agent.json and even /.well-known/agent-skills/superscale/skill.md.
+    The genuine card is on docs.superscale.ai.
 - host: https://app.superscale.ai
   path: /.well-known/*
   status: 200
   real: false
-  note: >-
-    Same Next.js SPA catch-all as the apex for every path except
-    security.txt, which is served correctly.
+  note: Same Next.js SPA catch-all as the apex for every path except security.txt, which is served correctly.
+x-mcp-probe:
+  probed: '2026-09-19'
+  issue: roadmap#321, roadmap#337
+  documents:
+  - host: https://mcp.superscale.ai
+    path: /.well-known/oauth-protected-resource
+    file: superscale-mcp-oauth-protected-resource.json
+  - host: https://superscale.ai
+    path: /__clerk/.well-known/oauth-authorization-server
+    file: superscale-superscale-oauth-authorization-server.json
+  validated_on: resource (RFC 9728) / issuer (RFC 8414, OIDC)
+  negative_control: one per host; a 2xx JSON object at an impossible path discards the host
+note: 'MCP-host OAuth discovery added 2026-09-19 (roadmap#321/#337): the harvest visits a provider''s
+  primary hosts, and RFC 9728 protected-resource metadata lives on the MCP host, so these documents existed
+  and were invisible to the scorer. Fetched live and validated on `resource`/`issuer`; one negative control
+  per host.'

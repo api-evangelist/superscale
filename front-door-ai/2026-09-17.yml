@@ -1,0 +1,29 @@
+# Front Door AI Index — superscale — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: superscale
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.superscale.ai
+  final_host: superscale.ai
+  ownership: own
+  owner: superscale
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 19
+  host_score: 19
+  density: 19.96
+  words: 952
+  tiers:
+    agentic: 3
+    core: 16
+    model: 0
+  ambiguous: 10
+  top_terms:
+    AI: 16
+    agent: 10
+    MCP: 1
+    agentic: 1
+    prompts: 1
