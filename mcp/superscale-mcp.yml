@@ -137,3 +137,17 @@ deployment:
   probe: gated
   checked: '2026-08-12'
   source: catalog MCP census
+rfc9728:
+  endpoint: https://mcp.superscale.ai/mcp
+  metadata_url: https://mcp.superscale.ai/.well-known/oauth-protected-resource/mcp
+  discovered_via: WWW-Authenticate resource_metadata on an anonymous POST initialize
+  fetched: '2026-09-25'
+  http_status: 200
+  content_type: application/json
+  document:
+    resource: https://mcp.superscale.ai/mcp
+    authorization_servers:
+    - https://superscale.ai/__clerk
+    scopes_supported:
+    - profile
+    - email
